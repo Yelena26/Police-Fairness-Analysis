@@ -1,0 +1,11 @@
+model {
+  for (i in 1:length(stops)) {
+    incidents[i] ~ dbin(prob[i], stops[i])
+    logit(prob[i]) <- betarace[race[i]]
+   
+  }
+  for (j in 1:max(race)) {
+    betarace[j] ~ dnorm(0, 0.1)
+  }
+ 
+}
